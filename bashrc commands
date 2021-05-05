@@ -1,8 +1,7 @@
 alias p='pwd ; ls -CF'
-\n
+
 PATH=$PATH:/home/USERNAME/myScripts ; export PATH
-\n
+
 PS1="${debian_chroot:+($debian_chroot)}\[\033[01;35m\][\$(date +%H:%M)] \[\033[01;32m\]\u\[\033[01;35m\]@\[\033[01;32m\]\h\[\033[01;35m\]:\[\033[01;36m\]\w\[\033[01;31m\]\$\[\033[00m\]"
-\n
+
 LS_COLORS="di=01;36"
-\n
