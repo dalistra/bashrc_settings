@@ -1,6 +1,6 @@
 alias p='pwd ; ls -CF'
 
-PATH=$PATH:/home/durion/myScripts ; export PATH
+PATH=$PATH:/home/USERNAME/myScripts ; export PATH
 
 PS1="${debian_chroot:+($debian_chroot)}\[\033[01;35m\][\$(date +%H:%M)] \[\033[01;32m\]\u\[\033[01;31m\]@\[\033[01;32m\]\h\[\033[01;37m\]:\[\033[01;36m\]\w\[\033[01;31m\]\$\[\033[00m\]"
 
