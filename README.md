@@ -9,6 +9,7 @@ Additionally there is an alias for pwd and ls in combination and a PATH extensio
 use:
 
 wget -qO- https://raw.githubusercontent.com/dalistra/bashrc_settings/main/bashrc%20commands >> TEXTFILENAME
+
 if you want to add the text directly to ".bashrc" in $HOME use:
 
 wget -qO- https://raw.githubusercontent.com/dalistra/bashrc_settings/main/bashrc%20commands >> /home/USERNAME/.bashrc
