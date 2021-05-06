@@ -1,0 +1,47 @@
+ALT+STRG+F1-F6  - will open alternative shells
+
+type ANYCOMMAND   #to find out where the command is located
+
+locate ANYCOMMAND   #?try to find any file assosiated to the command?
+
+
+
+
+
+BASH COMMAND navigation
+Ctrl+L Clear screen Clear screen and leave line at the top of the screen.
+Alt+F Word forward Go forward one word.
+Alt+B Word backward Go backward one word.
+Ctrl+A Beginning of line Go to the beginning of the current line.
+Ctrl+E End of line Go to the end of the line.
+
+Ctrl+K Cut end of line Cut text to the end of the line.
+Ctrl+U Cut beginning of line Cut text to the beginning of the line.
+Ctrl+Y Paste recent text Paste most recently cut text.
+Alt+Y Paste earlier text Rotate back to previously cut text and paste it.
+
+Another way to work with your history list is to use the fc command. Type fc followed by
+a history line number, and that command line is opened in your default text editor. Make
+the changes that you want. When you exit the editor, the command runs. You can also give
+a range of line numbers (for example, fc 100 105). All of the commands open in your text
+editor and then run one after the other when you exit the editor.
+
+Ctrl+R Reverse incremental search   After you press these keys, you enter a search string
+to do a reverse search. As you type the string, a matching command line appears that you can
+run or edit.
+Ctrl+S Forward incremental search This is the same as the preceding function but for
+forward search. (It may not work in all instances.)
+Alt+P Reverse search After you press these keys, you enter a string to do
+a reverse search. Type a string and press Enter to see the most recent command line that includes
+that string.
+Alt+N Forward search This is the same as the preceding function but for
+forward search. (It may not work in all instances.)
+
+$(command) and `command`  - for command substitution
+
+$[expression] - like $[2019 - 1957] will result in 62
+
+list shell variables - COMMANDS env and declare
+
+man -k passwd - if you want to look up which man pages are available(in which Sections)
+
