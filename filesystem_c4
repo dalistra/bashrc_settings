@@ -19,3 +19,13 @@
 /proc - system resource information
 /snap - home dir for snapd package management system
 
+< file to command      > output to file      2> error output to file     &> all output to file     >> output append to file
+<< here text like <<KEYWORD
+now i can write the wanted text and it will stop if i write the keyword again like
+KEYWORD
+
+touch test{1,3,5}
+ls
+test1 test3 test5
+touch {g..r}{4..9}      - will create a lot of files with the different combinations of ervery letter with every number
+
