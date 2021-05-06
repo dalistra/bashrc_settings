@@ -19,6 +19,11 @@
 /proc - system resource information
 /snap - home dir for snapd package management system
 
+ls -ld DIRECTORY       - will tell you the properties and permissions of the DIRECTORY
+chmod   - will change the permissions
+
+Metacharacters for ls: *;?;[...] for example [abw] will look for one of the characters [a-g] for a,b,c,d,e,f,g
+
 < file to command      > output to file      2> error output to file     &> all output to file     >> output append to file
 << here text like <<KEYWORD
 now i can write the wanted text and it will stop if i write the keyword again like
