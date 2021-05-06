@@ -1,0 +1,21 @@
+/etc  - administrative config files
+/home/ - user folders, only root has /root
+/media  - mountpoint for removable media, especialy sticks, smartphone etc.
+/mnt  - older version of media, still used for HDD partitions or fileserver
+/opt  - add-on application software
+/var  - !! Files that change a lot !! log files, data for various apps, can be used for FTP servers or websites
+        with /var/ftp or /var/www
+/usr  - !! intended, that the files don't get changed in this directory !! user documentation, games, libaries, commands,... 
+
+/dev  - access points to device(cd,hdd,ram,terminal devices)
+
+/bin  - common linux commands
+/sbin - admin commands and daemon processes
+/lib  - contains libaries
+/tmp  - like temp in windows temporary files used by applications
+/boot - boooooooot
+/sys  - parameters for ?? (tuning block storage and csgroups, ...)
+
+/proc - system resource information
+/snap - home dir for snapd package management system
+
