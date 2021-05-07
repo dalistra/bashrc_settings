@@ -1,5 +1,7 @@
 alias p='pwd ; ls -CF'
 
+alias mv='mv -i'
+
 PATH=$PATH:/home/USERNAME/myScripts ; export PATH
 
 PS1="${debian_chroot:+($debian_chroot)}\[\033[01;31m\][\$(date +%H:%M)] \[\033[01;35m\]\u@\h:\[\033[01;36m\]\w\$\[\033[01;32m\]"
