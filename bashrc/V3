@@ -1,6 +1,8 @@
 alias p='pwd ; ls -CF'
 
 alias mv='mv -i'
+alias cp='cp -i'
+alias rm='rm -i'
 
 PATH=$PATH:/home/USERNAME/myScripts ; export PATH
 
