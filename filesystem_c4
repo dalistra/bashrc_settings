@@ -19,6 +19,8 @@
 /proc - system resource information
 /snap - home dir for snapd package management system
 
+------------------------------------------------------------------------------------------------------------------------------------
+
 ls -ld DIRECTORY       - will tell you the properties and permissions of the DIRECTORY
 chmod   - will change the permissions
 
@@ -33,4 +35,28 @@ touch test{1,3,5}
 ls
 test1 test3 test5
 touch {g..r}{4..9}      - will create a lot of files with the different combinations of ervery letter with every number
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+ls -    l - for list        a - for all         t - order by last modified      F - will add / for dir * executable and @ for links
+ls --hide=a* for example will hide all results starting with 'a'
+ls -    R - will list all subcontent or files associated with the directory     S - order by sizy
+
+cd -    to go to the last directory
+ln -s dog pointer_to_dog        symbolic link -s
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+Permissions
+chmod XXX option -R for recursively      - 4 read 2 write 1 execute sum of the wanted permission is X. 1 X is user 2nd is group third is for other users
+                exception is s and t: s will set the user or group which will be used to run the executable and t will alow other users to place data
+                in the directory, but they cannot delete or modify data from other users.
+chmod augo +rwx or -rwx FILE       - will add or remove (r)ead (w)rite e(x)ecute for the (g)roup, (u)ser, (o)thers or (a)ll
+                example: chmod ug -xw to remove write and execute for user and group
+                         chmod a +rw to add read and write to all
+this command ist better for recursively change permissions than the number variant
+umask sets the standard permission for new file/folder umask 0XXX where the X are like the chmod XXX but 7-X so 000 is rwxrwxrwx and 777 is ---------
+
+change owner of file or dir use -R for recursively is an option
+chown dalistra FILE or chown dalistra:dalistra FILE
 
