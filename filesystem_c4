@@ -60,3 +60,4 @@ umask sets the standard permission for new file/folder umask 0XXX where the X ar
 change owner of file or dir use -R for recursively is an option
 chown dalistra FILE or chown dalistra:dalistra FILE
 
+Copy: with cp can use -r recursively and -a to save the permissions and modified dates
