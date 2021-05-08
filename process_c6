@@ -1,0 +1,24 @@
+ps u  - process user
+ps ux - process user (all)
+ps aux - all processes
+
+top:
+h help  M sort by Memory    1 toggle CPU    R reverse   u and enter username to select user
+k and enter PID to kill   r and PID to renice
+
+
+background process:
+& at the end of the command or use the "at" command
+running process --> STOP and background use Ctrl+Z
+stopped background process --> foreground and run use fg command example fg %1 1 is listed in jobs
+stopped background process --> background but RUN use bg command
+
+no output from process add 2> /dev/null at the end of the process command
+
+jobs - list background processes  -l for PID
+
+fg options:    % last background job; + sign in jobs
+               %string command begins with string must be EINDEUTIG
+               %?string command contains string at any point
+               %-- job stopped before the one most recently stopped
+               
