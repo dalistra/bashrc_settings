@@ -1,0 +1,8 @@
+#!/bin/bash
+
+echo '.......' only text "........." variables are read and printed
+
+in the script $0,$1,$2 etc. ${12} are used to adress input parameters.
+$#  number of parameters
+$@  all the parameters
+$?  exit status of last command
