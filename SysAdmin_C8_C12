@@ -1,0 +1,21 @@
+vimtutor
+
+sudo su to login as root or specify user with     su user
+sudo  gain root privilege at /etc/sudoers or with sudo group
+visudo to modify /etc/sudoers file
+
+/usr/share/man/man8   man pages for admin commands
+
+/usr/local/bin or /usr/local/sbin     for user specific commands. the PATH will add these automatically??
+
+journalctl    monitor system and service messages 
+dmesg
+lspci lsusb lscpu   maybe with -v -vv -vvv etc.
+lsmod   show loaded modules (hardware driver??)
+
+MOD INSTALL
+# modprobe MODULE to load module    -a if you want to install multiple, or dependencies
+# lsmod | grep MODULE to see if it is loaded
+MOD UNINSTALL
+# modprobe -r MODULE
+# lsmod | grep MODULE
