@@ -6,3 +6,25 @@ in the script $0,$1,$2 etc. ${12} are used to adress input parameters.
 $#  number of parameters
 $@  all the parameters
 $?  exit status of last command
+
+read -p "text will be shown to the user:" theinputwillgotothisvariablename secondtothis thirdtothis
+-p defines the text the user will see before the input prompt
+
+${var:-value}: If unset/empty --> expand to value.
+${var#pattern}: Chop shortest match pattern front
+${var##pattern}: Chop longest match pattern front 
+${var%pattern}: Chop shortest match pattern end
+${var%%pattern}: Chop longest match pattern end
+
+O=4
+$ echo "value is $((++O))"
+value is 5
+
+calculus use let  bc  expr
+
+IF  THEN
+CASE
+FOR DO
+WHILE DO      and       UNTIL DO
+
+
