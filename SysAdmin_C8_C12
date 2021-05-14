@@ -13,9 +13,11 @@ dmesg
 lspci lsusb lscpu   maybe with -v -vv -vvv etc.
 lsmod   show loaded modules (hardware driver??)
 
+rsyslogd and syslogd
+
 MOD INSTALL
 # modprobe MODULE to load module    -a if you want to install multiple, or dependencies
 # lsmod | grep MODULE to see if it is loaded
 MOD UNINSTALL
-# modprobe -r MODULE
+# modprobe -r MODULE        OR rmmod MODULE only a single module here
 # lsmod | grep MODULE
