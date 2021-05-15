@@ -21,3 +21,19 @@ MOD INSTALL
 MOD UNINSTALL
 # modprobe -r MODULE        OR rmmod MODULE only a single module here
 # lsmod | grep MODULE
+
+PACKAGES:
+sudo apt update
+sudo apt install PACKAGE
+sudo apt remove PACKAGE
+sudo apt purge PACKAGE
+sudo apt upgrade
+apt search sensor
+apt search sensor | grep -B 2 -A 2 degree    shows all packages with sensor and degree and the 2 lines before and after the entry
+apt show PACKAGE    shows info about package
+apt depends PACKAGE   shows package dependencies
+
+Package Sources are in /etc/apt/sources.list
+sudo apt-add-repository REPOSITORY LINK
+
+
