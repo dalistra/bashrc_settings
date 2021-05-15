@@ -36,4 +36,20 @@ apt depends PACKAGE   shows package dependencies
 Package Sources are in /etc/apt/sources.list
 sudo apt-add-repository REPOSITORY LINK
 
+USERS:
+adduser and deluser (interactive) or useradd and userdel (noninteractive)
+default Values for new users are in /etc/login.defs and /etc/adduser.conf
+user accountinfo and password are stored in /etc/passwd and /etc/shadow
+the dir /etc/skel is copied to each new home dir
 
+usermod   to modify an user
+
+GROUPS:
+newgroup GROUPNAME   to change my primary group, maybe exit to get my old grp back?
+addgroup GROUPNAME   to add a new group
+groupmod -n apple pear    will modify a group in this case the name
+
+File Permission with ACL (Access Control List)
+setfacl -m u:username:rwx filename      -m to modify    -x to remove permissions
+setfacl -m g:groupname:rw filename
+getfacl
