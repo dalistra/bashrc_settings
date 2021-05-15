@@ -61,3 +61,6 @@ getfacl filename    the mask parameter is set as the standard chmod group permis
 
 chgrp groupname directorypath   to assign a group to a dir
 chmod 2775 dirpath    to set the group as SET so every subfolder/file will inherit the group  4 is set UID  2 is set GUI  1 is sticky bit
+
+centralizing user account database with LDAP (opensource) NIS old or Winbind (Active Directory)
+
