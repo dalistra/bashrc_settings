@@ -50,6 +50,14 @@ addgroup GROUPNAME   to add a new group
 groupmod -n apple pear    will modify a group in this case the name
 
 File Permission with ACL (Access Control List)
-setfacl -m u:username:rwx filename      -m to modify    -x to remove permissions
+check if acl is enabled: mount | grep sda   or sdb sdc etc.
+sudo tune2fs -l /dev/sd*2 | grep mount    use the detected letter from command above and the correct number for the right partition
+sudo tune2fs -o acl /dev/sd*NUMBER    to add the acl option to the filesystem. to work you have toremount the filesystem
+
+setfacl -m u:username:rwx filename      -m to modify    -x to remove permissions      d:  right before the u: or g: to set as default, which will inherit the permission to subfolder/files
 setfacl -m g:groupname:rw filename
-getfacl
+getfacl filename    the mask parameter is set as the standard chmod group permission and
+                    sets the maximum permission a user or group can have through ACL permissions
+
+chgrp groupname directorypath   to assign a group to a dir
+chmod 2775 dirpath    to set the group as SET so every subfolder/file will inherit the group  4 is set UID  2 is set GUI  1 is sticky bit
