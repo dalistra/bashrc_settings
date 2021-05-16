@@ -45,7 +45,7 @@ the dir /etc/skel is copied to each new home dir
 usermod   to modify an user
 
 GROUPS:
-newgroup GROUPNAME   to change my primary group, maybe exit to get my old grp back?
+newgrp GROUPNAME   to change my primary group, maybe exit to get my old grp back?
 addgroup GROUPNAME   to add a new group
 groupmod -n apple pear    will modify a group in this case the name
 
