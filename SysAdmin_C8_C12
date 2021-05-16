@@ -65,3 +65,37 @@ chmod 2775 dirpath    to set the group as SET so every subfolder/file will inher
 
 centralizing user account database with LDAP (opensource) NIS old or Winbind (Active Directory)
 
+FILESYSTEM AND PARTITIONS:
+
+/etc/fstab    file which contains information about partitions devices and mount points
+
+parted -l /dev/sd*    command will list info about disk and partitions
+fdisk -l /dev/sd*     command will list info about disk and partitions
+lsblk                 command will list info about disk and partitions
+
+mount | grep sd*      to check the mount points of a specific disk
+
+PARTED:
+parted /dev/sd*       to enter partition application for sd*
+(parted) p            list the partitions
+(parted) rm           remove partitions
+(parted) mklabel gpt      relabel the partition table to gpt
+(parted) mkpart       create an partition with a name a file system and a start and end point on the disk
+(parted) p            list the partitions and check again if the process was done correctly
+(parted) quit         quit to quit parted
+
+mkfs -t xfs /dev/sd*NUMBER    create a filesystem on the partition  there are other possible commands such as mkfs.ext4
+
+mkdir /mnt/test           create dir
+mount /dev/sd*NUMBER /mnt/test    mount the disk to /mnt/test
+df -h /mnt/test           show info about the mountpoint
+
+umount /dev/sd*NUMBER     to unmount the disk
+
+/etc/fstab    is a file which holds mountpoints and will mount them automatically at the system boot
+you can add for example /dev/sdb1 /mnt/test xfs defaults 0 1      to the file to mount sdb1 at system start
+        xfs is the filesystem and defaults are the options used first 0 is for backup  dump command and second 1 will check the disk health after #Mounts
+
+
+
+
