@@ -67,6 +67,7 @@ centralizing user account database with LDAP (opensource) NIS old or Winbind (Ac
 
 FILESYSTEM AND PARTITIONS:
 
+journalctl -f     to watch the log file, where you can see new usb sticks and so on..
 /etc/fstab    file which contains information about partitions devices and mount points
 
 parted -l /dev/sd*    command will list info about disk and partitions
@@ -96,6 +97,87 @@ umount /dev/sd*NUMBER     to unmount the disk
 you can add for example /dev/sdb1 /mnt/test xfs defaults 0 1      to the file to mount sdb1 at system start
         xfs is the filesystem and defaults are the options used first 0 is for backup  dump command and second 1 will check the disk health after #Mounts
 
+FDISK APP FOR PARTITIONING
+
+dd if=/dev/zero of=/dev/sdLETTER bs=1M count=100     this command will fill the device file for the disk with zeros to delete the configuration
+
+fdisk /dev/sdLETTER       this will start the programm for sdLETTER
+n       new partition     part.num.     firstsector       lastsector can be written as +5G for 5 Gigabyte or +500M etc.
+there are possible 4 primary partitions, one or more of these can be extended partitions (container for logical partitions)
+in a extended partition it is possible to create more than the standard 4 limit like 1,2,3 prim 4 extended 5,6,7,8,... logical partitions which are inside part 4 
 
 
+p     will show the partition list
+t     will change the partition type of a partition     c for FAT32     8e for Linux LVM
+l     will list all partition types
+w     to write the partitions in the partition table. until now fdisk didnt change anything
 
+# grep sdb /proc/partitions       check if the new partitions are here... if not do the next command and check again
+8 16 120127488 sdb
+8 17 120125440 sdb1
+# partprobe /dev/sdb              command if the list isnt correct in the last command
+# grep sdb /proc/partitions       check again
+8 16 120127488 sdb
+8 17 5242880 sdb1
+8 18 5242880 sdb2
+8 19 3145728 sdb3
+8 20 1 sdb4
+8 21 3145728 sdb5
+8 22 4194304 sdb6
+
+PARTITIONS TO FILESYSTEMS OR SWAP AREAS....
+# mkfs -t ext4 /dev/sdb1        ext4 filesystem
+# mkswap /dev/sdb2              swap area
+# mkfs /dev/sdb3                ext2 default option
+# mkfs -t vfat /dev/sdb5        vfat filesystem
+# pvcreate /dev/sdb6            LVM physical volume
+
+
+CHECKING FOR LVM
+
+# fdisk -l /dev/sda | grep /dev/sda       check for Linux LVM partitions
+# pvdisplay /dev/sda2                     show info for physical volume
+# vgdisplay vg_abc                        show info for volume group
+# lvdisplay vg_abc                        show info for logical volumes
+
+hirachy for LVM is Physical volume ---> volume group ---> logical volumes
+
+# vgcreate myvg0 /dev/sdc6          create a volume group
+# vgdisplay myvg0                   show volume group
+# lvcreate -n music -L 1G myvg0     create logical volume music with 1G space in myvg0
+# ls /dev/mapper/myvg0*             list the lv for myvg0
+
+# mkfs -t ext4 /dev/mapper/myvg0-music        format the lv
+# mkdir /mnt/mymusic                           make a folder to mount the volume
+# mount /dev/mapper/myvg0-music /mnt/mymusic    mount the volume
+# df -h /mnt/mymusic                          shows the free space in the lv
+
+to mount in /etc/fstab you could use /dev/mapper/myvg0-music /mnt/mymusic ext4 defaults 1 2 for example
+
+growing LVM volumes:
+# vgdisplay myvg0         info about the vg
+# df -h /mnt/mymusic/     info about the vg
+
+# lvextend -L +1G /dev/mapper/myvg0-music       extend the lv myvg0-music by 1G
+# resize2fs -p /dev/mapper/myvg0-music          resice the filesystem to fit ne lv size
+
+# df -h /mnt/mymusic/     info about the vg      check the new size
+
+FILESYSTEMS
+man fs
+
+SWAP Memory
+# free -m       show memory stats
+# dd if=/dev/zero of=/var/tmp/myswap bs=1M count=1024     create a file for later swap use
+# mkswap /var/opt/myswap                make a swap file 
+# swapon /var/opt/myswap                activate the swap file
+# free -m                     stats
+
+FSTAB FOR PERMANENT SWAP USE AND MOUNT
+/etc/fstab
+/var/opt/myswap swap swap defaults 0 0
+# swapon -a       to activate it directly?? not only after reboot
+
+# swapoff /var/opt/myswap       disable swap check with free -m if swap is empty
+
+Seite 258
