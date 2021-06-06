@@ -201,3 +201,12 @@ mount ISO:
 # mkdir /mnt/isoimage
 # mount -o loop isofile123.iso /mnt/isoimage
 
+A # umount /mnt/test            -l lazy     can be used if the drive is busy and the unmount should happen when the disk isnt busy anymore
+B # umount /dev/sdb1            -f force    can be used to force the unmount
+it’s better to use the directory name (/mnt/test), because the other option fails if the device is mounted in several points
+
+lsof /mnt/test      can be used to see which process holds the drive busy 
+fuser -v /mnt/test      same result as above
+
+
+
