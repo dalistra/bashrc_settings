@@ -51,6 +51,8 @@ Permissions
 chmod XXX option -R for recursively      - 4 read 2 write 1 execute sum of the wanted permission is X. 1 X is user 2nd is group third is for other users
                 exception is s and t: s will set the user or group which will be used to run the executable and t will alow other users to place data
                 in the directory, but they cannot delete or modify data from other users.
+                
+MAYBE THE FOLLOWING COMMAND HAS NO SPACE BAR BETWEN augo and +rwx so it can be augo+rwx:
 chmod augo +rwx or -rwx FILE       - will add or remove (r)ead (w)rite e(x)ecute for the (g)roup, (u)ser, (o)thers or (a)ll
                 example: chmod ug -xw to remove write and execute for user and group
                          chmod a +rw to add read and write to all
