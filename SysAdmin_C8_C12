@@ -181,3 +181,23 @@ FSTAB FOR PERMANENT SWAP USE AND MOUNT
 # swapoff /var/opt/myswap       disable swap check with free -m if swap is empty
 
 Seite 258
+
+blkid     to see all the UUIDs from the disk devices    they can be used to mount a EINDEUTIGES disk instead of using sd*#
+
+/etc/fstab  example
+
+/dev/sdc1                     /windowsdisk    vfat    ro                1 2                                   ro for read olny???
+192.168.0.94:/nfsdisk         /remotedisk     nfs     users,_netdev     0 0                                   _netdev   will wait for network to start before mount
+//192.168.0.95/myNASshare     /NASshare       cifs    guest,_netdev     0 0                                   users and guests will allow them to mount the disks
+
+mount     to see mounted disks/partitions
+mount example
+# mkdir /mnt/temp
+# mount -t ext2 -o ro /dev/sdc1 /mnt/temp     -o for options this example read only
+remount:
+# mount -t ext2 -o remount,rw /dev/sdc1       read write remount
+
+mount ISO:
+# mkdir /mnt/isoimage
+# mount -o loop isofile123.iso /mnt/isoimage
+
