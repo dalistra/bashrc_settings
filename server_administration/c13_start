@@ -3,3 +3,9 @@ rsyslog
 systemd
 journalctl
 
+rsync -avl --delete dir1 dir2                 option l(copy symbolic links) is maybe redundant with option a
+sftp      scp     ssh       
+
+
+
+285
