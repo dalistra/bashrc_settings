@@ -142,6 +142,7 @@ CHECKING FOR LVM
 
 hirachy for LVM is Physical volume ---> volume group ---> logical volumes
 
+??? #pvcreate                       maybe use this first to create a physicalvolume for LVM use ????
 # vgcreate myvg0 /dev/sdc6          create a volume group
 # vgdisplay myvg0                   show volume group
 # lvcreate -n music -L 1G myvg0     create logical volume music with 1G space in myvg0
