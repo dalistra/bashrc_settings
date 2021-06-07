@@ -1,1 +1,5 @@
-qwe
+Systemlogging:
+rsyslog
+systemd
+journalctl
+
