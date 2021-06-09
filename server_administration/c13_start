@@ -6,6 +6,63 @@ journalctl
 rsync -avl --delete dir1 dir2                 option l(copy symbolic links) is maybe redundant with option a
 sftp      scp     ssh       
 
+SSH Key authorization
+ssh-keygen          generate a ssh keypair(private and public) optional passwort for private key
+$ ssh-copy-id -i ~/.ssh/id_rsa.pub dalistra@HOST_IP_ADRESS
+dalistra@HOST_IP_ADRESS's password:
+
+LOGGING:
+rsyslog is the daemon for logging its most important configuration file is /etc/rsyslog.conf 
+journalctl will show log messages directly from systemd journal ???
+/etc/rsyslog.d/         will set which log messages go in which log file and which importancy the message must have to be logged
+
+Logging message structure
+date and time that the message was logged
+name of the computer from which the message came
+program or service name to which the message pertains
+process number (enclosed in square brackets) of the program sending the message
+actual text message
+
+!!!!!MUST BE BOLD!!!!  ????????    send logging to a remote logging host add /etc/rsyslog.conf
+CLIENT /etc/rsyslog.conf
+authpriv.*                      @hostIPadress:port
+mail.*                          @hostIPadress:port
+
+HOST /etc/rsyslog.conf  uncomment following rows or only UDP or TCP as needed
+module(load="imudp") # needs to be done just once
+input(type="imudp" port="514")
+module(load="imtcp") # needs to be done just once
+input(type="imtcp" port="514")
+
+after this restart the service        systemctl restart rsyslog
+# netstat -tupln | grep 514         to check if the service is listening to the port
+
+Logwatch      apt install logwatch      log summarize with optional daily email of most important messages
+mailutils package is needed if the mail shall work properly apt install mailutils
+logwatch service runs from a cron (0logwatch) placed in /etc/cron.daily.
+/etc/logwatch/conf/logwatch.conf holds local settings.
+default options used to gather log messages are available in the
+/usr/share/logwatch/default.conf/logwatch.conf file
+(you can easily copy the file to your /etc/logwatch/conf/ directory).
+
+# mail    if you want to see the mail message on the local system
 
 
-285
+sar command for monitoring system resources
+part of the sysstat package maybe you need to apt install sysstat
+change /etc/default/sysstat       ENABLED="false" to ENABLED="true"
+and start the service
+# systemclt enable sysstat
+# systemctl start sysstat
+
+# sar -u      for seeing CPU usage for example will function if the logging is going on for some time
+# sar -d      disk usage
+# sar -n DEV 5 2      network usage every 5 seconds repeated twice??
+sar, sadc, sa1, and sa2 man pages are related
+
+
+df -h     disk free     -h for human readable
+du -h     disk used     same as above
+Add –s to see total disk space used for a directory and its subdirectories.
+
+
