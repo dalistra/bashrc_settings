@@ -1,1 +1,110 @@
+-------------------------mounting in /etc/fstab
+/dev/sdb1 /home ext4 defaults,nodev,noexec,nosuid 1 2
+nodev     no device files       noexec      no executable files       nosuid        no setUserID
+
+/dev/sdc1 /tmp ext4 defaults,nodev,noexec,nosuid 1 1
+/dev/sdb2 /usr ext4 defaults,nodev 1 2
+/dev/sdb3 /var ext4 defaults,nodev,noexec,nosuid 1 2
+
+-------------------------USER ACCOUNTS
+commands
+
+chage -M  -m  -W  -l and usermod and passwd
+
+one user per user account.
+Limit access to the root user account.
+expiration dates on temporary accounts.
+Remove unused user accounts.
+
+password restrictions   /etc/pam.d/common-password or /etc/pam.d/common-auth
+add
+password requisite pam_cracklib.so minlen=12, dcredit=2, ucredit=3,lcredit=2, difok=4
+
+/etc/login.defs file:
+PASS_MAX_DAYS 30
+PASS_MIN_DAYS 5
+PASS_MIN_LEN 16
+PASS_WARN_AGE 7
+
+/etc/shadow   -rw-r----- 1 root shadow 1320 Apr 3 19:50 /etc/shadow
+-rw-r--r--. 1 root root 1644 Feb 2 02:30 /etc/passwd
+/etc/groups   and /etc/fstab    Owner: rw- Group: r-- Other: r--
+
+-------------------------BE CAREFUL WITH SUID AND SGID
+
+-------------------------auditd file monitoring
+to monitor single files you can use
+apt install auditd
+# auditctl -w /etc/passwd -p rwa              -w    which file      -p      triggers    read write execute attribute
+auditctl -l       list
+auditctl -W filename -p trigger(s)          to stop monitoring=????
+auditd: The audit daemon
+/etc/audit/auditd.conf: The audit daemon configuration file
+autditctl: Controls the auditing system
+/etc/audit/audit.rules: Configuration rules loaded at boot
+ausearch: Searches the audit logs for specified items
+aureport: Report creator for the audit logs
+audispd: Sends audit information to other programs
+
+
+-------------------------
+John the ripper password check
+# unshadow /etc/passwd /etc/shadow > password.file
+open the file and delete all user without password and such you want not to be tested against john
+# john password.file
+
+
+-------------------------check packages
+check configs and so on
+# dpkg --audit auditd package_name
+check md5sum
+dpkg -V package_name
+debsums -a      for all packages at once
+debsums packagename     for only one
+
+-------------------------search for recently modified command files
+find /sbin -mtime -1
+to lookup the suspicious file
+stat filename
+
+-------------------------occasionally look for
+SUID
+find / -perm -4000
+SGID
+find / -perm -2000
+rhost files
+find /home -name .rhosts
+Allows a system to trust another system completely.
+It should not be in /home directories.
+Ownerless files
+find / -nouser
+Groupless files
+find / -nogroup
+
+
+-------------------------Linux antivirus and database
+# apt install clamav clamav-freshclam
+ROOTKIT
+apt install chkrootkit
+chkrootkit          command will start the search
+ALTERNATIVE I used already
+rkhunter      package name and command
+settings
+/etc/rkhunter.conf
+rkhunter -c         to check the filesystem
+
+-------------------------network activity monitoring??
+aide        will create system "picture" to compare a later generated picture with    # aide.wrapper -i   will create the first picture
+# cp /var/lib/aide/aide.db.new /var/lib/aide/aide.db
+# aide.wrapper -C         crate the second pictute and compares against the first
+
+snort
+tripwire(no longer opensource)
+
+-------------------------SYSTEM PENETRATION TESTING WITH
+Kali Linux
+
+
+
+
 
